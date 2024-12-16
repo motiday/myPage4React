@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import Tooltip from 'react-tooltip';
+import { motion } from 'framer-motion';
 import {getUserData} from '../../../utils/github-api'
 import ProfileStat from './ProfileStat'
 
@@ -49,8 +49,20 @@ export default class Profile extends Component {
               data-tip={org.login}
             />
           ))}
-          <Tooltip effect="solid" />
         </section>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="mt-4"
+        >
+          <h3>Social Links</h3>
+          <ul>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">GitHub</a></li>
+          </ul>
+        </motion.div>
       </div>
     );
   }

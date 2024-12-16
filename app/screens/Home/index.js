@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 export default class Home extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
-    this.context.router.push({pathname: `/${this._input.value}`});
+    this.props.history.push({pathname: `/${this._input.value}`});
   }
 
   render() {
@@ -31,8 +31,4 @@ export default class Home extends Component {
       </section>
     );
   }
-}
-
-Home.contextTypes = {
-  router: React.PropTypes.object.isRequired,
 }
