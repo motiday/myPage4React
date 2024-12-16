@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './app/screens/Home';
 import User from './app/screens/User';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/styles.css';
 
 ReactDOM.render(
-  <Router history={browserHistory}>
+  <Router>
     <Route path="/" component={Home} />
     <Route path="/:username" component={User} />
   </Router>,
