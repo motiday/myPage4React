@@ -59,7 +59,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>エンジニアスキルセット</h1>
+        <h1>ポニョ</h1>
       </header>
       
       <main className="accordion-container">
