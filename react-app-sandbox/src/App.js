@@ -22,56 +22,46 @@ const skillsData = [
   }
 ];
 
-function SkillAccordion({ title, skills, description, isOpen, onClick }) {
+function SkillSection({ title, skills, description }) {
   return (
-    <div className={`accordion-item ${isOpen ? 'open' : ''}`}>
-      <div className="accordion-header" onClick={onClick}>
-        <h3>{title}</h3>
-        <span className="accordion-icon">{isOpen ? '−' : '＋'}</span>
-      </div>
-      {isOpen && (
-        <div className="accordion-content">
-          <p>{description}</p>
-          <ul>
-            {skills.map((skill, index) => (
-              <li key={index}>{skill}</li>
-            ))}
-          </ul>
+    <section className="skill-section">
+      <div className="content-wrapper">
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <div className="skills-list">
+          {skills.map((skill, index) => (
+            <span key={index} className="skill-tag">{skill}</span>
+          ))}
         </div>
-      )}
-    </div>
+        <button className="learn-more">詳細を見る</button>
+      </div>
+    </section>
   );
 }
 
 function App() {
-  const [openItems, setOpenItems] = useState(new Set());
-
-  const toggleItem = (id) => {
-    const newOpenItems = new Set(openItems);
-    if (newOpenItems.has(id)) {
-      newOpenItems.delete(id);
-    } else {
-      newOpenItems.add(id);
-    }
-    setOpenItems(newOpenItems);
-  };
-
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>ポニョ</h1>
+      <header className="hero-section">
+        <div className="logo">LOGO</div>
+        <nav>
+          <a href="#profile">プロフィール</a>
+          <a href="#skills">スキル</a>
+          <a href="#contact">お問い合わせ</a>
+        </nav>
+        <h1>プロフィール</h1>
+        <button className="cta-button">詳細を見る</button>
       </header>
       
-      <main className="accordion-container">
+      <main>
         {skillsData.map((item) => (
-          <SkillAccordion
-            key={item.id}
-            {...item}
-            isOpen={openItems.has(item.id)}
-            onClick={() => toggleItem(item.id)}
-          />
+          <SkillSection key={item.id} {...item} />
         ))}
       </main>
+      
+      <footer>
+        <p>© 2024 Portfolio</p>
+      </footer>
     </div>
   );
 }
