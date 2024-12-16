@@ -30,7 +30,7 @@ const skillsData = [
     projects: [
       {
         name: "APIサーバー開発",
-        description: "モバイルアプリのバックエンドサーバー",
+        description: "モバイルアプ��のバックエンドサーバー",
         technologies: ["Node.js", "Express", "PostgreSQL"],
         role: "バックエンドリード"
       }
@@ -103,22 +103,26 @@ function SkillSection({ title, skills, description, projects }) {
 function App() {
   return (
     <div className="App">
-      <header className="hero-section">
+      <header className="header">
         <div className="logo">LOGO</div>
         <nav>
           <a href="#profile">プロフィール</a>
           <a href="#skills">スキル</a>
           <a href="#contact">お問い合わせ</a>
         </nav>
-        <h1>プロフィール</h1>
-        <button className="cta-button">詳細を見る</button>
       </header>
-      
-      <main>
-        {skillsData.map((item) => (
-          <SkillSection key={item.id} {...item} />
-        ))}
-      </main>
+
+      <div className="main-content">
+        <section className="hero-section">
+          <h1>プロフィール</h1>
+        </section>
+        
+        <main>
+          {skillsData.map((item) => (
+            <SkillSection key={item.id} {...item} />
+          ))}
+        </main>
+      </div>
       
       <footer>
         <p>© 2024 Portfolio</p>

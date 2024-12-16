@@ -5,14 +5,14 @@
 .hero-section {
   background-color: #ffd700;
   padding: 2rem;
-  min-height: 80vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
 .logo {
-  position: absolute;
+  /* position: absolute; */
   top: 2rem;
   left: 2rem;
   background: white;
@@ -21,7 +21,7 @@
 }
 
 nav {
-  position: absolute;
+  /* position: absolute; */
   top: 2rem;
   right: 2rem;
   display: flex;
@@ -148,4 +148,21 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ffd700;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-content {
+  padding-top: 80px;
 }
