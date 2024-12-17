@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 
 const skillsData = [
@@ -30,7 +30,7 @@ const skillsData = [
     projects: [
       {
         name: "APIサーバー開発",
-        description: "モバイルアプ��のバックエンドサーバー",
+        description: "モバイルアプリのバックエンドサーバー",
         technologies: ["Node.js", "Express", "PostgreSQL"],
         role: "バックエンドリード"
       }
@@ -101,30 +101,71 @@ function SkillSection({ title, skills, description, projects }) {
 }
 
 function App() {
+  const [activeSection, setActiveSection] = useState('profile');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['profile', 'skills', 'contact'];
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (
+            scrollPosition >= offsetTop && 
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="App">
       <header className="header">
         <div className="logo">LOGO</div>
         <nav>
-          <a href="#profile">プロフィール</a>
-          <a href="#skills">スキル</a>
-          <a href="#contact">お問い合わせ</a>
+          <a 
+            href="#profile" 
+            className={activeSection === 'profile' ? 'active' : ''}
+          >
+            プロフィール
+          </a>
+          <a 
+            href="#skills" 
+            className={activeSection === 'skills' ? 'active' : ''}
+          >
+            スキル
+          </a>
+          <a 
+            href="#contact" 
+            className={activeSection === 'contact' ? 'active' : ''}
+          >
+            お問い合わせ
+          </a>
         </nav>
       </header>
 
       <div className="main-content">
-        <section className="hero-section">
+        <section id="profile" className="hero-section">
           <h1>プロフィール</h1>
         </section>
         
-        <main>
+        <main id="skills">
           {skillsData.map((item) => (
             <SkillSection key={item.id} {...item} />
           ))}
         </main>
       </div>
       
-      <footer>
+      <footer id="contact">
         <p>© 2024 Portfolio</p>
       </footer>
     </div>

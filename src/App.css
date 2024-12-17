@@ -32,6 +32,14 @@ nav a {
   color: #333;
   text-decoration: none;
   font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+nav a.active {
+  background-color: #333;
+  color: white;
 }
 
 .hero-section h1 {
